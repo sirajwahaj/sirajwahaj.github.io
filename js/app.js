@@ -138,20 +138,25 @@ async function loadCVData() {
 }
 
 // Function to download CV as PDF
+// Function to download CV as PDF
 function downloadCVasPDF() {
-  const element = document.getElementById('cv-root'); // wrap all CV content in #cv-root
-  if (!element) return;
+  const element = document.getElementById('cv-root');
 
+  // PDF options for A4
   const opt = {
-    margin: 0.5,
+    margin: [10, 10, 10, 10], // top, left, bottom, right in mm
     filename: 'Sirajulhaq_Wahaj_CV.pdf',
     image: { type: 'jpeg', quality: 0.98 },
-    html2canvas: { scale: 2 },
-    jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+    html2canvas: { scale: 2, logging: true, scrollY: 0 },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
   };
 
   html2pdf().set(opt).from(element).save();
 }
+
+// Attach button
+document.getElementById('download-pdf').addEventListener('click', downloadCVasPDF);
+
 
 // Event listeners
 document.addEventListener('DOMContentLoaded', () => {
