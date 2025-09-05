@@ -5,40 +5,42 @@
   "address": "Professorsgatan 8B, 215 53 Malmö, Sweden",
   "linkedin": "https://linkedin.com/in/sirajwahaj",
   "github": "https://github.com/sirajwahaj",
-  "summary": "Your professional summary here...",
+  "summary": "DevOps Engineer student with strong expertise in IT infrastructure, automation, and cloud platforms. Experienced in configuring CI/CD pipelines, container orchestration, and network security. Skilled in Linux and Windows server administration, virtualization, and implementing monitoring solutions.",
   "education": [
     {
-      "title": "Data Science Master program",
-      "institution": "Malmö University, Sweden",
+      "title": "DevOps Engineer",
+      "institution": "Jensen Yrkeshögskola, Sweden",
       "date": "Aug 2024 – Jun 2026 (Expected)"
+    },
+    {
+      "title": "IT Administration",
+      "institution": "Technical University of Berlin, Germany",
+      "date": "Mar 2018 – Sep 2018"
     }
   ],
   "skills": [
-    {
-      "category": "Programming & Scripting",
-      "items": "Python, Bash, PowerShell, PHP, Java"
-    }
+    { "category": "Programming & Scripting", "items": "Python, Bash, PowerShell" },
+    { "category": "DevOps", "items": "Docker, Kubernetes, CI/CD (GitHub Actions), Ansible" }
   ],
   "professional_experience": [
     {
       "title": "IT Support Intern",
-      "company": "ReDi School of Digital Integration, Malmö, Sweden",
+      "company": "ReDi School of Digital Integration, Malmö",
       "date": "Mar 2024 – May 2024",
       "description": [
-        "Configured and maintained classroom computer systems.",
-        "Delivered one-on-one technical support."
+        "Configured and maintained classroom systems",
+        "Delivered one-on-one support",
+        "Documented recurring issues"
       ]
     }
+  ],
+  "languages": [
+    { "name": "English", "level": "Fluent" },
+    { "name": "Swedish", "level": "Intermediate" }
   ],
   "certifications": [
     "Microsoft Azure Fundamentals",
     "Cisco IT Essentials"
-  ],
-  "languages": [
-    {
-      "name": "English",
-      "level": "Fluent"
-    }
   ],
   "last_updated": "September 2025"
 }

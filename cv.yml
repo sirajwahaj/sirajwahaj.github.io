@@ -1,0 +1,80 @@
+name: Sirajulhaq Wahaj
+email: siraj.wahaj@outlook.com
+phone: "+46 727 718 823"
+address: Professorsgatan 8B, 215 53 Malmö, Sweden
+linkedin: https://linkedin.com/in/sirajwahaj
+github: https://github.com/sirajwahaj
+summary: >
+  DevOps Engineer student with strong expertise in IT infrastructure,
+  automation, and cloud platforms. Experienced in configuring CI/CD pipelines,
+  container orchestration, and network security. Skilled in Linux and Windows
+  server administration, virtualization, and implementing monitoring solutions
+  to optimize performance. Passionate about building scalable systems,
+  automating workflows, and ensuring reliable deployments.
+
+education:
+  - title: DevOps Engineer
+    institution: Jensen Yrkeshögskola, Sweden
+    date: Aug 2024 – Jun 2026 (Expected)
+  - title: IT Administration
+    institution: Technical University of Berlin, Germany
+    date: Mar 2018 – Sep 2018
+  - title: B.Sc. in Information Technology
+    institution: Polytechnic University
+    date: 2013 – 2016
+
+skills:
+  - category: Programming & Scripting
+    items: Python, Bash, PowerShell, PHP, Java
+  - category: DevOps
+    items: Docker, Kubernetes, CI/CD (GitHub Actions, Jenkins), Ansible, Terraform, Helm
+  - category: Cloud Platforms
+    items: Azure, AWS
+  - category: Virtualization
+    items: Hyper-V, Xen
+  - category: Networking & Security
+    items: pfSense, IT Security, Cisco Cybersecurity
+  - category: Monitoring & Backup
+    items: Prometheus, Grafana, Bareos Backup Systems
+  - category: Databases
+    items: MySQL, PostgreSQL
+  - category: Operating Systems
+    items: Linux (Ubuntu, CentOS), Windows Server 2019/2022
+  - category: Project Management
+    items: Agile Methodologies
+
+professional_experience:
+  - title: IT Support Intern
+    company: ReDi School of Digital Integration, Malmö, Sweden
+    date: Mar 2024 – May 2024
+    description:
+      - Configured and maintained classroom computer systems.
+      - Delivered one-on-one technical support to enhance digital literacy.
+      - Documented recurring issues and suggested improvements.
+  - title: IT Engineer
+    company: High Security Printing House
+    date: 2019 – 2020
+    description:
+      - Installed, configured, and maintained Linux and Windows servers.
+      - Managed virtual machines using XenCenter and automated backups.
+      - Oversaw IT infrastructure and implemented secure network practices.
+  - title: PHP Developer
+    company: Development and Registry Addressing Service
+    date: Sep 2017 – Dec 2017
+    description:
+      - Developed and maintained web applications using CodeIgniter.
+      - Optimized system performance and performed debugging.
+
+certifications:
+  - Microsoft Azure Fundamentals
+  - Cisco IT Essentials
+
+languages:
+  - name: English
+    level: Fluent
+  - name: Swedish
+    level: Upper-Intermediate
+  - name: Pashto, Dari, Farsi
+    level: Fluent
+
+last_updated: September 2025

@@ -1,305 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Sirajulhaq Wahaj</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-            color: #4D4D4D;
+            font-family: 'Roboto', sans-serif; line-height: 1.6; color: #4D4D4D;
             background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
-            padding: 20px;
-            min-height: 100vh;
+            padding: 20px; min-height: 100vh;
         }
-        
-        .cv-container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
-            padding: 40px;
-            border-radius: 8px;
-            border: 1px solid #e0e0e0;
-        }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #2E86C1;
-            position: relative;
-        }
-        
-        .profile-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #2E86C1;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-        
-        .name {
-            font-size: 36px;
-            font-weight: 700;
-            color: #1B4F72;
-            margin-bottom: 10px;
-        }
-        
-        .title {
-            font-size: 20px;
-            color: #2E86C1;
-            margin-bottom: 15px;
-            font-weight: 500;
-        }
-        
-        .contact-info {
-            font-size: 16px;
-            margin-bottom: 5px;
-        }
-        
-        .contact-info a {
-            color: #2E86C1;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .contact-info a:hover {
-            color: #1B4F72;
-            text-decoration: underline;
-        }
-        
-        .section {
-            margin-bottom: 25px;
-        }
-        
-        .section-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: #2E86C1;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            padding-bottom: 5px;
-            border-bottom: 2px solid #e0e0e0;
-            display: flex;
-            align-items: center;
-        }
-        
-        .section-title i {
-            margin-right: 10px;
-        }
-        
-        .summary {
-            font-size: 16px;
-            line-height: 1.6;
-            text-align: justify;
-            padding: 10px 15px;
-            background: #f9f9f9;
-            border-left: 3px solid #2E86C1;
-            border-radius: 0 4px 4px 0;
-        }
-        
-        .item {
-            margin-bottom: 15px;
-            padding: 10px 15px;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-        
-        .item:hover {
-            background-color: #f9f9f9;
-        }
-        
-        .item-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-        }
-        
-        .item-title {
-            font-weight: 600;
-            color: #333;
-        }
-        
-        .item-date {
-            color: #2E86C1;
-            font-style: italic;
-        }
-        
-        .item-subtitle {
-            color: #666;
-            margin-bottom: 5px;
-        }
-        
-        .item-description {
-            padding-left: 20px;
-        }
-        
-        .item-description ul {
-            list-style-type: none;
-        }
-        
-        .item-description li {
-            margin-bottom: 5px;
-            position: relative;
-        }
-        
-        .item-description li:before {
-            content: "•";
-            position: absolute;
-            left: -15px;
-            color: #2E86C1;
-            font-weight: bold;
-        }
-        
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        
-        .skill-category {
-            flex: 1;
-            min-width: 250px;
-            background: #f9f9f9;
-            padding: 15px;
-            border-radius: 6px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        
-        .skill-category h4 {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 8px;
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .skill-category h4 i {
-            margin-right: 8px;
-            color: #2E86C1;
-        }
-        
-        .skill-category p {
-            margin-bottom: 15px;
-            line-height: 1.4;
-        }
-        
-        .two-columns {
-            display: flex;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-        
-        .column {
-            flex: 1;
-            min-width: 250px;
-        }
-        
-        .language-item {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .language-name {
-            font-weight: 600;
-            color: #333;
-            min-width: 120px;
-        }
-        
-        .language-level {
-            color: #2E86C1;
-        }
-        
-        .footer {
-            text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #e0e0e0;
-            color: #666;
-            font-size: 14px;
-        }
-        
-        .badge {
-            display: inline-block;
-            background: #2E86C1;
-            color: white;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            margin: 2px;
-        }
-
+        .cv-container { max-width: 900px; margin: 0 auto; background: white; box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15); padding: 40px; border-radius: 8px; border: 1px solid #e0e0e0; }
+        .header { text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px solid #2E86C1; position: relative; }
+        .profile-badge { position: absolute; top: 10px; right: 10px; background: #2E86C1; color: white; padding: 5px 10px; border-radius: 4px; font-size: 12px; font-weight: 500; }
+        .name { font-size: 36px; font-weight: 700; color: #1B4F72; margin-bottom: 10px; }
+        .title { font-size: 20px; color: #2E86C1; margin-bottom: 15px; font-weight: 500; }
+        .contact-info { font-size: 16px; margin-bottom: 5px; }
+        .contact-info a { color: #2E86C1; text-decoration: none; transition: color 0.3s; }
+        .contact-info a:hover { color: #1B4F72; text-decoration: underline; }
+        .section { margin-bottom: 25px; }
+        .section-title { font-size: 20px; font-weight: 700; color: #2E86C1; text-transform: uppercase; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 2px solid #e0e0e0; display: flex; align-items: center; }
+        .section-title i { margin-right: 10px; }
+        .summary { font-size: 16px; line-height: 1.6; text-align: justify; padding: 10px 15px; background: #f9f9f9; border-left: 3px solid #2E86C1; border-radius: 0 4px 4px 0; }
+        .item { margin-bottom: 15px; padding: 10px 15px; border-radius: 4px; transition: background-color 0.3s; }
+        .item:hover { background-color: #f9f9f9; }
+        .item-header { display: flex; justify-content: space-between; margin-bottom: 5px; }
+        .item-title { font-weight: 600; color: #333; }
+        .item-date { color: #2E86C1; font-style: italic; }
+        .item-subtitle { color: #666; margin-bottom: 5px; }
+        .item-description { padding-left: 20px; }
+        .item-description ul { list-style-type: none; }
+        .item-description li { margin-bottom: 5px; position: relative; }
+        .item-description li:before { content: "•"; position: absolute; left: -15px; color: #2E86C1; font-weight: bold; }
+        .skills-container { display: flex; flex-wrap: wrap; gap: 20px; }
+        .skill-category { flex: 1; min-width: 250px; background: #f9f9f9; padding: 15px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .skill-category h4 { font-weight: 600; color: #333; margin-bottom: 8px; font-size: 16px; display: flex; align-items: center; }
+        .skill-category h4 i { margin-right: 8px; color: #2E86C1; }
+        .skill-category p { margin-bottom: 15px; line-height: 1.4; }
+        .two-columns { display: flex; gap: 30px; flex-wrap: wrap; }
+        .column { flex: 1; min-width: 250px; }
+        .language-item { margin-bottom: 10px; display: flex; align-items: center; }
+        .language-name { font-weight: 600; color: #333; min-width: 120px; }
+        .language-level { color: #2E86C1; }
+        .footer { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e0e0e0; color: #666; font-size: 14px; }
+        .badge { display: inline-block; background: #2E86C1; color: white; padding: 3px 8px; border-radius: 4px; font-size: 12px; margin: 2px; }
         .downloadLink {
-              display: inline-flex;
-              align-items: center;
-              gap: 6px;
-              color: #0366d6;
-              text-decoration: none;
-              font-weight: 500;
-              padding: 6px 12px;
-              border: 1px solid #e1e4e8;
-              border-radius: 6px;
-              background-color: #fafbfc;
-              transition: all 0.2s;
-            }
-
-        .downloadLink:hover {
-              background-color: #0366d6;
-              color: white;
-              text-decoration: none;
-              border-color: #0366d6;
-            }
-
+            display: inline-flex; align-items: center; gap: 6px; color: #0366d6; text-decoration: none; font-weight: 500;
+            padding: 6px 12px; border: 1px solid #e1e4e8; border-radius: 6px; background-color: #fafbfc; transition: all 0.2s;
+        }
+        .downloadLink:hover { background-color: #0366d6; color: white; text-decoration: none; border-color: #0366d6; }
         .downloadLink::before {
-          content: "";
-          width: 16px;
-          height: 16px;
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%230366d6' d='M4.5 1.75a.25.25 0 0 1 .25-.25h8.5a.25.25 0 0 1 .25.25v4a.75.75 0 0 1-1.5 0V2.51H9.75a.75.75 0 0 1 0-1.5h2.5a.75.75 0 0 1 .75.75v10a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.5v-2.5a.75.75 0 0 1 1.5 0v3.25a.25.25 0 0 1-.25.25h-8.5a.25.25 0 0 1-.25-.25v-4a.75.75 0 0 1 1.5 0v2.5h1.5a.75.75 0 0 1 0 1.5h-2.5A.75.75 0 0 1 3 11.25V1.75z'/%3E%3Cpath fill='%230366d6' d='M6.25 7.25a.75.75 0 0 0 0 1.5h5.5a.75.75 0 0 0 0-1.5h-5.5z'/%3E%3C/svg%3E");
-          background-repeat: no-repeat;
-          background-position: center;
-          transition: all 0.2s;
+            content: ""; width: 16px; height: 16px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%230366d6' d='M4.5 1.75a.25.25 0 0 1 .25-.25h8.5a.25.25 0 0 1 .25.25v4a.75.75 0 0 1-1.5 0V2.51H9.75a.75.75 0 0 1 0-1.5h2.5a.75.75 0 0 1 .75.75v10a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.5v-2.5a.75.75 0 0 1 1.5 0v3.25a.25.25 0 0 1-.25.25h-8.5a.25.25 0 0 1-.25-.25v-4a.75.75 0 0 1 1.5 0v2.5h1.5a.75.75 0 0 1 0 1.5h-2.5A.75.75 0 0 1 3 11.25V1.75z'/%3E%3Cpath fill='%230366d6' d='M6.25 7.25a.75.75 0 0 0 0 1.5h5.5a.75.75 0 0 0 0-1.5h-5.5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: center; transition: all 0.2s;
         }
-
         .downloadLink:hover::before {
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='white' d='M4.5 1.75a.25.25 0 0 1 .25-.25h8.5a.25.25 0 0 1 .25.25v4a.75.75 0 0 1-1.5 0V2.51H9.75a.75.75 0 0 1 0-1.5h2.5a.75.75 0 0 1 .75.75v10a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.5v-2.5a.75.75 0 0 1 1.5 0v3.25a.25.25 0 0 1-.25.25h-8.5a.25.25 0 0 1-.25-.25v-4a.75.75 0 0 1 1.5 0v2.5h1.5a.75.75 0 0 1 0 1.5h-2.5A.75.75 0 0 1 3 11.25V1.75z'/%3E%3Cpath fill='white' d='M6.25 7.25a.75.75 0 0 0 0 1.5h5.5a.75.75 0 0 0 0-1.5h-5.5z'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='white' d='M4.5 1.75a.25.25 0 0 1 .25-.25h8.5a.25.25 0 0 1 .25.25v4a.75.75 0 0 1-1.5 0V2.51H9.75a.75.75 0 0 1 0-1.5h2.5a.75.75 0 0 1 .75.75v10a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.5v-2.5a.75.75 0 0 1 1.5 0v3.25a.25.25 0 0 1-.25.25h-8.5a.25.25 0 0 1-.25-.25v-4a.75.75 0 0 1 1.5 0v2.5h1.5a.75.75 0 0 1 0 1.5h-2.5A.75.75 0 0 1 3 11.25V1.75z'/%3E%3Cpath fill='white' d='M6.25 7.25a.75.75 0 0 0 0 1.5h5.5a.75.75 0 0 0 0-1.5h-5.5z'/%3E%3C/svg%3E");
         }
-        
         @media (max-width: 768px) {
-            .cv-container {
-                padding: 20px;
-            }
-            
-            .name {
-                font-size: 28px;
-            }
-            
-            .two-columns {
-                flex-direction: column;
-            }
-            
-            .item-header {
-                flex-direction: column;
-            }
-            
-            .item-date {
-                margin-top: 5px;
-            }
+            .cv-container { padding: 20px; }
+            .name { font-size: 28px; }
+            .two-columns { flex-direction: column; }
+            .item-header { flex-direction: column; }
+            .item-date { margin-top: 5px; }
         }
     </style>
 </head>
@@ -309,321 +75,64 @@
             <div class="profile-badge">Open to Opportunities</div>
             <h1 class="name" id="cv-name">Sirajulhaq Wahaj</h1>
             <div class="contact-info">
-                <a href="mailto:siraj.wahaj@outlook.com" id="cv-email"><i class="fas fa-envelope"></i> siraj.wahaj@outlook.com</a> | 
+                <a href="mailto:siraj.wahaj@outlook.com" id="cv-email"><i class="fas fa-envelope"></i> siraj.wahaj@outlook.com</a> |
                 <i class="fas fa-phone"></i> <span id="cv-phone">+46 727 718 823</span>
             </div>
             <div class="contact-info">
                 <i class="fas fa-map-marker-alt"></i> <span id="cv-address">Professorsgatan 8B, 215 53 Malmö, Sweden</span>
             </div>
             <div class="contact-info">
-                <a href="https://linkedin.com/in/sirajwahaj" target="_blank" id="cv-linkedin"><i class="fab fa-linkedin"></i> linkedin.com/in/sirajwahaj</a> | 
+                <a href="https://linkedin.com/in/sirajwahaj" target="_blank" id="cv-linkedin"><i class="fab fa-linkedin"></i> linkedin.com/in/sirajwahaj</a> |
                 <a href="https://github.com/sirajwahaj" target="_blank" id="cv-github"><i class="fab fa-github"></i> github.com/sirajwahaj</a>
             </div>
         </div>
-        
+
         <div class="section">
             <h2 class="section-title"><i class="fas fa-user"></i> Professional Summary</h2>
             <p class="summary" id="cv-summary">
-                DevOps Engineer student with strong expertise in IT infrastructure, automation, and cloud platforms. 
-                Experienced in configuring CI/CD pipelines, container orchestration, and network security. 
-                Skilled in Linux and Windows server administration, virtualization, and implementing monitoring solutions to optimize performance. 
-                Passionate about building scalable systems, automating workflows, and ensuring reliable deployments.
+                <!-- filled by JS -->
             </p>
         </div>
-        
+
         <div class="section">
             <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
-            <div id="cv-education">
-                <!-- Education items will be generated here -->
-            </div>
+            <div id="cv-education"></div>
         </div>
-        
+
         <div class="section">
             <h2 class="section-title"><i class="fas fa-code"></i> Technical Skills</h2>
-            <div id="cv-skills">
-                <!-- Skills will be generated here -->
-            </div>
+            <div id="cv-skills" class="skills-container"></div>
         </div>
-        
+
         <div class="section">
             <h2 class="section-title"><i class="fas fa-briefcase"></i> Professional Experience</h2>
-            <div id="cv-experience">
-                <!-- Experience items will be generated here -->
-            </div>
+            <div id="cv-experience"></div>
         </div>
-        
+
         <div class="two-columns">
             <div class="column">
                 <div class="section">
                     <h2 class="section-title"><i class="fas fa-certificate"></i> Certifications</h2>
-                    <div id="cv-certifications">
-                        <!-- Certifications will be generated here -->
-                    </div>
+                    <div id="cv-certifications"></div>
                 </div>
             </div>
-            
             <div class="column">
                 <div class="section">
                     <h2 class="section-title"><i class="fas fa-language"></i> Languages</h2>
-                    <div id="cv-languages">
-                        <!-- Languages will be generated here -->
-                    </div>
+                    <div id="cv-languages"></div>
                 </div>
             </div>
         </div>
-        
+
         <div class="footer">
-            <p><a href="path/to/SirajCv.pdf" download class="downloadLink">Download a PDF version of this CV</a></p>
-            <p>Last updated: <span id="cv-last-updated">September 2025</span></p>
+            <p><a href="SirajCv.pdf" download class="downloadLink">Download a PDF version of this CV</a></p>
+            <p>Last updated: <span id="cv-last-updated"></span></p>
         </div>
     </div>
 
-    <script>
-        // Function to load CV data from an external JSON file
-        async function loadCVData() {
-            try {
-                // In a real scenario, this would be a separate JSON file
-                // For demonstration, we're using a simulated external data source
-                const response = await fetch('data:cvdummy/json;base64,eyJuYW1lIjoiU2lyYWp1bGhhcSBXYWhhaiIsImVtYWlsIjoic2lyYWoud2FoYWpAb3V0bG9vay5jb20iLCJwaG9uZSI6Iis0NiA3MjcgNzE4IDgyMyIsImFkZHJlc3MiOiJQcm9mZXNzb3JzZ2F0YW4gOEIsIDIxNSA1MyBNYWxtw7YsIFN3ZWRlbiIsImxpbmtlZGluIjoiaHR0cHM6Ly9saW5rZWRpbi5jb20vaW4vc2lyYWp3YWhhaiIsImdpdGh1YiI6Imh0dHBzOi8vZ2l0aHViLmNvbS9zaXJhandhaGFqIiwic3VtbWFyeSI6IkRldk9wcyBFbmdpbmVlciBzdHVkZW50IHdpdGggc3Ryb25nIGV4cGVydGlzZSBpbiBJVCBpbmZyYXN0cnVjdHVyZSwgYXV0b21hdGlvbiwgYW5kIGNsb3VkIHBsYXRmb3Jtcy4gRXhwZXJpZW5jZWQgaW4gY29uZmlndXJpbmcgQ0kvQ0QgcGlwZWxpbmVzLCBjb250YWluZXIgb3JjaGVzdHJhdGlvbiwgYW5kIG5ldHdvcmsgc2VjdXJpdHkuIFNraWxsZWQgaW4gTGludXggYW5kIFdpbmRvd3Mgc2VydmVyIGFkbWluaXN0cmF0aW9uLCB2aXJ0dWFsaXphdGlvbiwgYW5kIGltcGxlbWVudGluZyBtb25pdG9yaW5nIHNvbHV0aW9ucyB0byBvcHRpbWl6ZSBwZXJmb3JtYW5jZS4gUGFzc2lvbmF0ZSBhYm91dCBidWlsZGluZyBzY2FsYWJsZSBzeXN0ZW1zLCBhdXRvbWF0aW5nIHdvcmtmbG93cywgYW5kIGVuc3VyaW5nIHJlbGlhYmxlIGRlcGxveW1lbnRzLiIsImVkdWNhdGlvbiI6W3sidGl0bGUiOiJEZXZPcHMgRW5naW5lZXIiLCJpbnN0aXR1dGlvbiI6IkplbnNlbiBZcmtlc2jDtnNrb2xhLCBTd2VkZW4iLCJkYXRlIjoiQXVnIDIwMjQgw5wgSnVuIDIwMjYgKEV4cGVjdGVkKSJ9LHsidGl0bGUiOiJJVCBBZG1pbmlzdHJhdGlvbiIsImluc3RpdHV0aW9uIjoiVGVjaG5pY2FsIFVuaXZlcnNpdHkgb2YgQmVybGluLCBHZXJtYW55IiwiZGF0ZSI6Ik1hciAyMDE4IOKApiBTZXAgMjAxOCJ9LHsidGl0bGUiOiJCLlNjLiBpbiBJbmZvcm1hdGlvbiBUZWNobm9sb2d5IiwiaW5zdGl0dXRpb24iOiJQb2x5dGVjaG5pYyBVbml2ZXJzaXR5IiwiZGF0ZSI6IjIwMTMgw5wgMjAxNiJ9XSwic2tpbGxzIjpbeyJjYXRlZ29yeSI6IlByb2dyYW1taW5nICYgU2NyaXB0aW5nIiwiaXRlbXMiOiJQeXRob24sIEJhc2gsIFBvd2VyU2hlbGwsIFBIUCwgSmF2YSJ9LHsiY2F0ZWdvcnkiOiJEZXZPcHMiLCJpdGVtcyI6IkRvY2tlciwgS3ViZXJuZXRlcywgQ0kvQ0QgKEdpdEh1YiBBY3Rpb25zLCBKZW5raW5zKSwgQW5zaWJsZSwgVGVycmFmb3JtLCBIZWxtIn0seyJjYXRlZ29yeSI6IkNsb3VkIFBsYXRmb3JtcyIsIml0ZW1zIjoiQXp1cmUsIEFXUyJ9LHsiY2F0ZWdvcnkiOiJWaXJ0dWFsaXphdGlvbiIsIml0ZW1zIjoiSHlwZXItViwgWGVuIn0seyJjYXRlZ29yeSI6Ik5ldHdvcmtpbmcgJiBTZWN1cml0eSIsIml0ZW1zIjoicGZTZW5zZSwgSVQgU2VjdXJpdHksIENpc2NvIEN5YmVyc2VjdXJpdHksIExvYWQgQmFsYW5jaW5nLCBOZ2lueCJ9LHsiY2F0ZWdvcnkiOiJNb25pdG9yaW5nICYgQmFja3VwIiwiaXRlbXMiOiJQcm9tZXRoZXVzLCBHcmFmYW5hLCBCYXJlb3MgQmFja3VwIFN5c3RlbXMifSx7ImNhdGVnb3J5IjoiRGF0YWJhc2VzIiwiaXRlbXMiOiJNeVNRTCwgUG9zdGdyZVNRTCJ9LHsiY2F0ZWdvcnkiOiJPcGVyYXRpbmcgU3lzdGVtcyIsIml0ZW1zIjoiTGludXggKFVidW50dSwgQ2VudE9TKSwgV2luZG93cyBTZXJ2ZXIgMjAxOS8yMDIyIn0seyJjYXRlZ29yeSI6IlByb2plY3QgTWFuYWdlbWVudCIsIml0ZW1zIjoiQWdpbGUgTWV0aG9kb2xvZ2llcyJ9XSwicHJvZmVzc2lvbmFsX2V4cGVyaWVuY2UiOlt7InRpdGxlIjoiSVQgU3VwcG9ydCBJbnRlcm4iLCJjb21wYW55IjoiUmVESSBTY2hvb2wgb2YgRGlnaXRhbCBJbnRlZ3JhdGlvbiwgTWFsbcO2LCBTd2VkZW4iLCJkYXRlIjoiTWFyIDIwMjQgw5wgTWF5IDIwMjQiLCJkZXNjcmlwdGlvbiI6WyJDb25maWd1cmVkIGFuZCBtYWludGFpbmVkIGNsYXNzcm9vbSBjb21wdXRlciBzeXN0ZW1zLiIsIkRlbGl2ZXJlZCBvbmUtb24tb25lIHRlY2huaWNhbCBzdXBwb3J0IHRvIGVuaGFuY2UgZGlnaXRhbCBsaXRlcmFjeS4iLCJEb2N1bWVudGVkIHJlY3VycmluZyBpc3N1ZXMgYW5kIHN1Z2dlc3RlZCBpbXByb3ZlbWVudHMuIl19LHsidGl0bGUiOiJJVCBFbmdpbmVlciIsImNvbXBhbnkiOiJIaWdoIFNlY3VyaXR5IFByaW50aW5nIEhvdXNlIiwiZGF0ZSI6IjIwMTkgw5wgMjAyMCIsImRlc2NyaXB0aW9uIjpbIkluc3RhbGxlZCwgY29uZmlndXJlZCwgYW5kIG1haW50YWluZWQgTGludXggYW5kIFdpbmRvd3Mgc2VydmVycy4iLCJNYW5hZ2VkIHZpcnR1YWwgbWFjaGluZXMgdXNpbmcgWGVuQ2VudGVyIGFuZCBhdXRvbWF0ZWQgYmFja3Vwcy4iLCJPdmVyc2F3IElUIGluZnJhc3RydWN0dXJlIGFuZCBpbXBsZW1lbnRlZCBzZWN1cmUgbmV0d29yayBwcmFjdGljZXMuIl19LHsidGl0bGUiOiJQSFAgRGV2ZWxvcGVyIiwiY29tcGFueSI6IkRldmVsb3BtZW50IGFuZCBSZWdpc3RyeSBBZGRyZXNzaW5nIFNlcnZpY2UiLCJkYXRlIjoiU2VwIDIwMTcgw5wgRGVjIDIwMTciLCJkZXNjcmlwdGlvbiI6WyJEZXZlbG9wZWQgYW5kIG1haW50YWluZWQgd2ViIGFwcGxpY2F0aW9ucyB1c2luZyBDb2RlSWduaXRlci4iLCJPcHRpbWl6ZWQgc3lzdGVtIHBlcmZvcm1hbmNlIGFuZCBwZXJmb3JtZWQgZGVidWdnaW5nLiJ9XSwibGFuZ3VhZ2VzIjpbeyJuYW1lIjoiRW5nbGlzaCIsImxldmVsIjoiRmx1ZW50In0seyJuYW1lIjoiU3dlZGlzaCIsImxldmVsIjoiVXBwZXItSW50ZXJtZWRpYXRlIn0seyJuYW1lIjoiUGFzaHRvLCBEYXJpLCBGYXJzaSIsImxldmVsIjoiRmx1ZW50In1dLCJjZXJ0aWZpY2F0aW9ucyI6WyJNaWNyb3NvZnQgQXp1cmUgRnVuZGFtZW50YWxzIiwiQ2lzY28gSVQgRXNzZW50aWFscyJdLCJsYXN0X3VwZGF0ZWQiOiJKdW5lIDIwMjMifQ==');
-                const cvData = await response.json();
-                
-                // Update CV with the loaded data
-                updateCV(cvData);
-            } catch (error) {
-                console.error('Error loading CV data:', error);
-                // Fallback to default data
-                const defaultData = {
-                    name: "Sirajulhaq Wahaj",
-                    email: "siraj.wahaj@outlook.com",
-                    phone: "+46 727 718 823",
-                    address: "Professorsgatan 8B, 215 53 Malmö, Sweden",
-                    linkedin: "https://linkedin.com/in/sirajwahaj",
-                    github: "https://github.com/sirajwahaj",
-                    summary: "DevOps Engineer student with strong expertise in IT infrastructure, automation, and cloud platforms. Experienced in configuring CI/CD pipelines, container orchestration, and network security. Skilled in Linux and Windows server administration, virtualization, and implementing monitoring solutions to optimize performance. Passionate about building scalable systems, automating workflows, and ensuring reliable deployments.",
-                    education: [
-                        {
-                            title: "DevOps Engineer",
-                            institution: "Jensen Yrkeshögskola, Sweden",
-                            date: "Aug 2024 – Jun 2026 (Expected)"
-                        },
-                        {
-                            title: "IT Administration",
-                            institution: "Technical University of Berlin, Germany",
-                            date: "Mar 2018 – Sep 2018"
-                        },
-                        {
-                            title: "B.Sc. in Information Technology",
-                            institution: "Polytechnic University",
-                            date: "2013 – 2016"
-                        }
-                    ],
-                    skills: [
-                        {
-                            category: "Programming & Scripting",
-                            items: "Python, Bash, PowerShell, PHP, Java"
-                        },
-                        {
-                            category: "DevOps",
-                            items: "Docker, Kubernetes, CI/CD (GitHub Actions, Jenkins), Ansible, Terraform, Helm"
-                        },
-                        {
-                            category: "Cloud Platforms",
-                            items: "Azure, AWS"
-                        },
-                        {
-                            category: "Virtualization",
-                            items: "Hyper-V, Xen"
-                        },
-                        {
-                            category: "Networking & Security",
-                            items: "pfSense, IT Security, Cisco Cybersecurity, Load Balancing, Nginx"
-                        },
-                        {
-                            category: "Monitoring & Backup",
-                            items: "Prometheus, Grafana, Bareos Backup Systems"
-                        },
-                        {
-                            category: "Databases",
-                            items: "MySQL, PostgreSQL"
-                        },
-                        {
-                            category: "Operating Systems",
-                            items: "Linux (Ubuntu, CentOS), Windows Server 2019/2022"
-                        },
-                        {
-                            category: "Project Management",
-                            items: "Agile Methodologies"
-                        }
-                    ],
-                    professional_experience: [
-                        {
-                            title: "IT Support Intern",
-                            company: "ReDi School of Digital Integration, Malmö, Sweden",
-                            date: "Mar 2024 – May 2024",
-                            description: [
-                                "Configured and maintained classroom computer systems.",
-                                "Delivered one-on-one technical support to enhance digital literacy.",
-                                "Documented recurring issues and suggested improvements."
-                            ]
-                        },
-                        {
-                            title: "IT Engineer",
-                            company: "High Security Printing House",
-                            date: "2019 – 2020",
-                            description: [
-                                "Installed, configured, and maintained Linux and Windows servers.",
-                                "Managed virtual machines using XenCenter and automated backups.",
-                                "Oversaw IT infrastructure and implemented secure network practices."
-                            ]
-                        },
-                        {
-                            title: "PHP Developer",
-                            company: "Development and Registry Addressing Service",
-                            date: "Sep 2017 – Dec 2017",
-                            description: [
-                                "Developed and maintained web applications using CodeIgniter.",
-                                "Optimized system performance and performed debugging."
-                            ]
-                        }
-                    ],
-                    certifications: [
-                        "Microsoft Azure Fundamentals",
-                        "Cisco IT Essentials"
-                    ],
-                    languages: [
-                        {
-                            name: "English",
-                            level: "Fluent"
-                        },
-                        {
-                            name: "Swedish",
-                            level: "Upper-Intermediate"
-                        },
-                        {
-                            name: "Pashto, Dari, Farsi",
-                            level: "Fluent"
-                        }
-                    ],
-                    last_updated: "June 2023"
-                };
-                updateCV(defaultData);
-            }
-        }
-        
-        // Function to update the CV with data
-        function updateCV(cvData) {
-            // Update basic information
-            document.getElementById('cv-name').textContent = cvData.name;
-            document.getElementById('cv-email').textContent = cvData.email;
-            document.getElementById('cv-email').href = `mailto:${cvData.email}`;
-            document.getElementById('cv-phone').textContent = cvData.phone;
-            document.getElementById('cv-address').textContent = cvData.address;
-            document.getElementById('cv-linkedin').href = cvData.linkedin;
-            document.getElementById('cv-github').href = cvData.github;
-            document.getElementById('cv-summary').textContent = cvData.summary;
-            document.getElementById('cv-last-updated').textContent = cvData.last_updated;
-            
-            // Update education
-            const educationContainer = document.getElementById('cv-education');
-            educationContainer.innerHTML = '';
-            
-            cvData.education.forEach(edu => {
-                const eduHTML = `
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-title">${edu.title}</span>
-                            <span class="item-date">${edu.date}</span>
-                        </div>
-                        <div class="item-subtitle">${edu.institution}</div>
-                    </div>
-                `;
-                educationContainer.innerHTML += eduHTML;
-            });
-            
-            // Update skills
-            const skillsContainer = document.getElementById('cv-skills');
-            skillsContainer.innerHTML = '<div class="skills-container"></div>';
-            const skillsColumns = skillsContainer.querySelector('.skills-container');
-            
-            // Split skills into 3 columns for better layout
-            const skillsPerColumn = Math.ceil(cvData.skills.length / 3);
-            
-            for (let i = 0; i < 3; i++) {
-                const column = document.createElement('div');
-                column.className = 'skill-category';
-                
-                const startIndex = i * skillsPerColumn;
-                const endIndex = Math.min(startIndex + skillsPerColumn, cvData.skills.length);
-                
-                for (let j = startIndex; j < endIndex; j++) {
-                    const skill = cvData.skills[j];
-                    const skillHTML = `
-                        <h4><i class="fas fa-check-circle"></i>${skill.category}:</h4>
-                        <p>${skill.items}</p>
-                    `;
-                    column.innerHTML += skillHTML;
-                }
-                
-                skillsColumns.appendChild(column);
-            }
-            
-            // Update experience
-            const experienceContainer = document.getElementById('cv-experience');
-            experienceContainer.innerHTML = '';
-            
-            cvData.professional_experience.forEach(exp => {
-                let descriptionHTML = '';
-                exp.description.forEach(desc => {
-                    descriptionHTML += `<li>${desc}</li>`;
-                });
-                
-                const expHTML = `
-                    <div class="item">
-                        <div class="item-header">
-                            <span class="item-title">${exp.title}</span>
-                            <span class="item-date">${exp.date}</span>
-                        </div>
-                        <div class="item-subtitle">${exp.company}</div>
-                        <div class="item-description">
-                            <ul>${descriptionHTML}</ul>
-                        </div>
-                    </div>
-                `;
-                experienceContainer.innerHTML += expHTML;
-            });
-            
-            // Update certifications
-            const certContainer = document.getElementById('cv-certifications');
-            certContainer.innerHTML = '';
-            
-            cvData.certifications.forEach(cert => {
-                const certHTML = `
-                    <div class="item">
-                        <div class="item-title"><i class="fas fa-award"></i> ${cert}</div>
-                    </div>
-                `;
-                certContainer.innerHTML += certHTML;
-            });
-            
-            // Update languages
-            const langContainer = document.getElementById('cv-languages');
-            langContainer.innerHTML = '';
-            
-            cvData.languages.forEach(lang => {
-                const langHTML = `
-                    <div class="language-item">
-                        <span class="language-name">${lang.name}:</span>
-                        <span class="language-level">${lang.level}</span>
-                    </div>
-                `;
-                langContainer.innerHTML += langHTML;
-            });
-        }
-        
-        // Initialize the CV when the page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            loadCVData();
-        });
-    </script>
+    <!-- YAML parser (tiny, safe to use on GitHub Pages) -->
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js" defer></script>
+    <!-- Your app logic -->
+    <script src="js/app.js" defer></script>
 </body>
 </html>
