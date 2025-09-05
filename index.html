@@ -307,9 +307,10 @@
 </head>
 
 <body>
-    <div id="cv-root">
-        <div class="cv-container">
-            <div class="header">
+
+    <div class="cv-container">
+        <div class="header">
+            <div id="cv-root">
                 <h1 class="name" id="cv-name">Sirajulhaq Wahaj</h1>
                 <div class="contact-info">
                     <a href="mailto:siraj.wahaj@outlook.com" id="cv-email"><i class="fas fa-envelope"></i>
@@ -364,18 +365,18 @@
                     </div>
                 </div>
             </div>
-
-            <div class="footer">
-                <button id="download-pdf">Download CV as PDF</button>
-                <p>Last updated: <span id="cv-last-updated"></span></p>
-            </div>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-        <!-- YAML parser (tiny, safe to use on GitHub Pages) -->
-        <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js" defer></script>
-        <!-- Your app logic -->
-        <script src="js/app.js" defer></script>
+        <div class="footer">
+            <button id="download-pdf">Download CV as PDF</button>
+            <p>Last updated: <span id="cv-last-updated"></span></p>
+        </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- YAML parser (tiny, safe to use on GitHub Pages) -->
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js" defer></script>
+    <!-- Your app logic -->
+    <script src="js/app.js" defer></script>
+
 </body>
 
 </html>
