@@ -175,6 +175,43 @@
             font-size: 14px;
         }
         
+        .data-management {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+        }
+        
+        .data-management h3 {
+            color: #1B4F72;
+            margin-bottom: 15px;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 200px;
+            padding: 10px;
+            font-family: monospace;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        
+        button {
+            background-color: #2E86C1;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+        
+        button:hover {
+            background-color: #1B4F72;
+        }
+        
         @media (max-width: 768px) {
             .cv-container {
                 padding: 20px;
@@ -193,23 +230,23 @@
 <body>
     <div class="cv-container">
         <div class="header">
-            <h1 class="name">Sirajulhaq Wahaj</h1>
+            <h1 class="name" id="cv-name">Sirajulhaq Wahaj</h1>
             <div class="contact-info">
-                <a href="mailto:siraj.wahaj@outlook.com"><i class="fas fa-envelope"></i> siraj.wahaj@outlook.com</a> | 
-                <i class="fas fa-phone"></i> +46 727 718 823
+                <a href="mailto:siraj.wahaj@outlook.com" id="cv-email"><i class="fas fa-envelope"></i> siraj.wahaj@outlook.com</a> | 
+                <i class="fas fa-phone"></i> <span id="cv-phone">+46 727 718 823</span>
             </div>
             <div class="contact-info">
-                <i class="fas fa-map-marker-alt"></i> Professorsgatan 8B, 215 53 Malmö, Sweden
+                <i class="fas fa-map-marker-alt"></i> <span id="cv-address">Professorsgatan 8B, 215 53 Malmö, Sweden</span>
             </div>
             <div class="contact-info">
-                <a href="https://linkedin.com/in/sirajwahaj" target="_blank"><i class="fab fa-linkedin"></i> linkedin.com/in/sirajwahaj</a> | 
-                <a href="https://github.com/sirajwahaj" target="_blank"><i class="fab fa-github"></i> github.com/sirajwahaj</a>
+                <a href="https://linkedin.com/in/sirajwahaj" target="_blank" id="cv-linkedin"><i class="fab fa-linkedin"></i> linkedin.com/in/sirajwahaj</a> | 
+                <a href="https://github.com/sirajwahaj" target="_blank" id="cv-github"><i class="fab fa-github"></i> github.com/sirajwahaj</a>
             </div>
         </div>
         
         <div class="section">
             <h2 class="section-title">Professional Summary</h2>
-            <p class="summary">
+            <p class="summary" id="cv-summary">
                 DevOps Engineer student with strong expertise in IT infrastructure, automation, and cloud platforms. 
                 Experienced in configuring CI/CD pipelines, container orchestration, and network security. 
                 Skilled in Linux and Windows server administration, virtualization, and implementing monitoring solutions to optimize performance. 
@@ -219,115 +256,22 @@
         
         <div class="section">
             <h2 class="section-title">Education</h2>
-            
-            <div class="item">
-                <div class="item-header">
-                    <span class="item-title">DevOps Engineer</span>
-                    <span class="item-date">Aug 2024 – Jun 2026 (Expected)</span>
-                </div>
-                <div class="item-subtitle">Jensen Yrkeshögskola, Sweden</div>
-            </div>
-            
-            <div class="item">
-                <div class="item-header">
-                    <span class="item-title">IT Administration</span>
-                    <span class="item-date">Mar 2018 – Sep 2018</span>
-                </div>
-                <div class="item-subtitle">Technical University of Berlin, Germany</div>
-            </div>
-            
-            <div class="item">
-                <div class="item-header">
-                    <span class="item-title">B.Sc. in Information Technology</span>
-                    <span class="item-date">2013 – 2016</span>
-                </div>
-                <div class="item-subtitle">Polytechnic University</div>
+            <div id="cv-education">
+                <!-- Education items will be generated here -->
             </div>
         </div>
         
         <div class="section">
             <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-container">
-                <div class="skill-category">
-                    <h4>Programming & Scripting:</h4>
-                    <p>Python, Bash, PowerShell, PHP, Java</p>
-                    
-                    <h4>DevOps:</h4>
-                    <p>Docker, Kubernetes, CI/CD (GitHub Actions, Jenkins), Ansible, Terraform, Helm</p>
-                    
-                    <h4>Cloud Platforms:</h4>
-                    <p>Azure, AWS</p>
-                </div>
-                
-                <div class="skill-category">
-                    <h4>Virtualization:</h4>
-                    <p>Hyper-V, Xen</p>
-                    
-                    <h4>Networking & Security:</h4>
-                    <p>pfSense, IT Security, Cisco Cybersecurity, Load Balancing, Nginx</p>
-                    
-                    <h4>Monitoring & Backup:</h4>
-                    <p>Prometheus, Grafana, Bareos Backup Systems</p>
-                </div>
-                
-                <div class="skill-category">
-                    <h4>Databases:</h4>
-                    <p>MySQL, PostgreSQL</p>
-                    
-                    <h4>Operating Systems:</h4>
-                    <p>Linux (Ubuntu, CentOS), Windows Server 2019/2022</p>
-                    
-                    <h4>Project Management:</h4>
-                    <p>Agile Methodologies</p>
-                </div>
+            <div id="cv-skills">
+                <!-- Skills will be generated here -->
             </div>
         </div>
         
         <div class="section">
             <h2 class="section-title">Professional Experience</h2>
-            
-            <div class="item">
-                <div class="item-header">
-                    <span class="item-title">IT Support Intern</span>
-                    <span class="item-date">Mar 2024 – May 2024</span>
-                </div>
-                <div class="item-subtitle">ReDi School of Digital Integration, Malmö, Sweden</div>
-                <div class="item-description">
-                    <ul>
-                        <li>Configured and maintained classroom computer systems.</li>
-                        <li>Delivered one-on-one technical support to enhance digital literacy.</li>
-                        <li>Documented recurring issues and suggested improvements.</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="item">
-                <div class="item-header">
-                    <span class="item-title">IT Engineer</span>
-                    <span class="item-date">2019 – 2020</span>
-                </div>
-                <div class="item-subtitle">High Security Printing House</div>
-                <div class="item-description">
-                    <ul>
-                        <li>Installed, configured, and maintained Linux and Windows servers.</li>
-                        <li>Managed virtual machines using XenCenter and automated backups.</li>
-                        <li>Oversaw IT infrastructure and implemented secure network practices.</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="item">
-                <div class="item-header">
-                    <span class="item-title">PHP Developer</span>
-                    <span class="item-date">Sep 2017 – Dec 2017</span>
-                </div>
-                <div class="item-subtitle">Development and Registry Addressing Service</div>
-                <div class="item-description">
-                    <ul>
-                        <li>Developed and maintained web applications using CodeIgniter.</li>
-                        <li>Optimized system performance and performed debugging.</li>
-                    </ul>
-                </div>
+            <div id="cv-experience">
+                <!-- Experience items will be generated here -->
             </div>
         </div>
         
@@ -335,11 +279,8 @@
             <div class="column">
                 <div class="section">
                     <h2 class="section-title">Certifications</h2>
-                    <div class="item-description">
-                        <ul>
-                            <li>Microsoft Azure Fundamentals</li>
-                            <li>Cisco IT Essentials</li>
-                        </ul>
+                    <div id="cv-certifications">
+                        <!-- Certifications will be generated here -->
                     </div>
                 </div>
             </div>
@@ -347,25 +288,265 @@
             <div class="column">
                 <div class="section">
                     <h2 class="section-title">Languages</h2>
-                    <div class="language-item">
-                        <span class="language-name">English:</span> Fluent
-                    </div>
-                    <div class="language-item">
-                        <span class="language-name">Swedish:</span> Upper-Intermediate
-                    </div>
-                    <div class="language-item">
-                        <span class="language-name">Pashto, Dari, Farsi:</span> Fluent
+                    <div id="cv-languages">
+                        <!-- Languages will be generated here -->
                     </div>
                 </div>
             </div>
         </div>
         
         <div class="footer">
-                    <p><a href="path/to/SirajCv.pdf" download>Download a PDF version of this CV</a></p>   
+            <p><a href="path/to/SirajCv.pdf" download>Download a PDF version of this CV</a></p>   
 
-                <p>Last updated: September 2025</p>
+                <p>Last updated: <span id="cv-last-updated">September 2025</span></p>
+        </div>
+
+        <div class="data-management">
+            <h3>Manage Your CV Data</h3>
+            <p>Edit the JSON data below to update your CV. The page will update automatically.</p>
+            <textarea id="cv-data" spellcheck="false">
+{
+  "name": "Sirajulhaq Wahaj",
+  "email": "siraj.wahaj@outlook.com",
+  "phone": "+46 727 718 823",
+  "address": "Professorsgatan 8B, 215 53 Malmö, Sweden",
+  "linkedin": "https://linkedin.com/in/sirajwahaj",
+  "github": "https://github.com/sirajwahaj",
+  "summary": "DevOps Engineer student with strong expertise in IT infrastructure, automation, and cloud platforms. Experienced in configuring CI/CD pipelines, container orchestration, and network security. Skilled in Linux and Windows server administration, virtualization, and implementing monitoring solutions to optimize performance. Passionate about building scalable systems, automating workflows, and ensuring reliable deployments.",
+  "education": [
+    {
+      "title": "DevOps Engineer",
+      "institution": "Jensen Yrkeshögskola, Sweden",
+      "date": "Aug 2024 – Jun 2026 (Expected)"
+    },
+    {
+      "title": "IT Administration",
+      "institution": "Technical University of Berlin, Germany",
+      "date": "Mar 2018 – Sep 2018"
+    },
+    {
+      "title": "B.Sc. in Information Technology",
+      "institution": "Polytechnic University",
+      "date": "2013 – 2016"
+    }
+  ],
+  "skills": [
+    {
+      "category": "Programming & Scripting",
+      "items": "Python, Bash, PowerShell, PHP, Java"
+    },
+    {
+      "category": "DevOps",
+      "items": "Docker, Kubernetes, CI/CD (GitHub Actions, Jenkins), Ansible, Terraform, Helm"
+    },
+    {
+      "category": "Cloud Platforms",
+      "items": "Azure, AWS"
+    },
+    {
+      "category": "Virtualization",
+      "items": "Hyper-V, Xen"
+    },
+    {
+      "category": "Networking & Security",
+      "items": "pfSense, IT Security, Cisco Cybersecurity, Load Balancing, Nginx"
+    },
+    {
+      "category": "Monitoring & Backup",
+      "items": "Prometheus, Grafana, Bareos Backup Systems"
+    },
+    {
+      "category": "Databases",
+      "items": "MySQL, PostgreSQL"
+    },
+    {
+      "category": "Operating Systems",
+      "items": "Linux (Ubuntu, CentOS), Windows Server 2019/2022"
+    },
+    {
+      "category": "Project Management",
+      "items": "Agile Methodologies"
+    }
+  ],
+  "experience": [
+    {
+      "title": "IT Support Intern",
+      "company": "ReDi School of Digital Integration, Malmö, Sweden",
+      "date": "Mar 2024 – May 2024",
+      "description": [
+        "Configured and maintained classroom computer systems.",
+        "Delivered one-on-one technical support to enhance digital literacy.",
+        "Documented recurring issues and suggested improvements."
+      ]
+    },
+    {
+      "title": "IT Engineer",
+      "company": "High Security Printing House",
+      "date": "2019 – 2020",
+      "description": [
+        "Installed, configured, and maintained Linux and Windows servers.",
+        "Managed virtual machines using XenCenter and automated backups.",
+        "Oversaw IT infrastructure and implemented secure network practices."
+      ]
+    },
+    {
+      "title": "PHP Developer",
+      "company": "Development and Registry Addressing Service",
+      "date": "Sep 2017 – Dec 2017",
+      "description": [
+        "Developed and maintained web applications using CodeIgniter.",
+        "Optimized system performance and performed debugging."
+      ]
+    }
+  ],
+  "certifications": [
+    "Microsoft Azure Fundamentals",
+    "Cisco IT Essentials"
+  ],
+  "languages": [
+    {
+      "name": "English",
+      "level": "Fluent"
+    },
+    {
+      "name": "Swedish",
+      "level": "Upper-Intermediate"
+    },
+    {
+      "name": "Pashto, Dari, Farsi",
+      "level": "Fluent"
+    }
+  ],
+  "lastUpdated": "June 2023"
+}
+            </textarea>
+            <button onclick="updateCV()">Update CV</button>
         </div>
     </div>
+
+    <script>
+        // Function to update the CV with data from the textarea
+        function updateCV() {
+            try {
+                const cvDataText = document.getElementById('cv-data').value;
+                const cvData = JSON.parse(cvDataText);
+                
+                // Update basic information
+                document.getElementById('cv-name').textContent = cvData.name;
+                document.getElementById('cv-email').textContent = cvData.email;
+                document.getElementById('cv-email').href = `mailto:${cvData.email}`;
+                document.getElementById('cv-phone').textContent = cvData.phone;
+                document.getElementById('cv-address').textContent = cvData.address;
+                document.getElementById('cv-linkedin').href = cvData.linkedin;
+                document.getElementById('cv-linkedin').textContent = 'linkedin.com/in/sirajwahaj';
+                document.getElementById('cv-github').href = cvData.github;
+                document.getElementById('cv-github').textContent = 'github.com/sirajwahaj';
+                document.getElementById('cv-summary').textContent = cvData.summary;
+                document.getElementById('cv-last-updated').textContent = cvData.lastUpdated;
+                
+                // Update education
+                const educationContainer = document.getElementById('cv-education');
+                educationContainer.innerHTML = '';
+                
+                cvData.education.forEach(edu => {
+                    const eduHTML = `
+                        <div class="item">
+                            <div class="item-header">
+                                <span class="item-title">${edu.title}</span>
+                                <span class="item-date">${edu.date}</span>
+                            </div>
+                            <div class="item-subtitle">${edu.institution}</div>
+                        </div>
+                    `;
+                    educationContainer.innerHTML += eduHTML;
+                });
+                
+                // Update skills
+                const skillsContainer = document.getElementById('cv-skills');
+                skillsContainer.innerHTML = '<div class="skills-container"></div>';
+                const skillsColumns = skillsContainer.querySelector('.skills-container');
+                
+                // Split skills into 3 columns for better layout
+                const skillsPerColumn = Math.ceil(cvData.skills.length / 3);
+                
+                for (let i = 0; i < 3; i++) {
+                    const column = document.createElement('div');
+                    column.className = 'skill-category';
+                    
+                    const startIndex = i * skillsPerColumn;
+                    const endIndex = Math.min(startIndex + skillsPerColumn, cvData.skills.length);
+                    
+                    for (let j = startIndex; j < endIndex; j++) {
+                        const skill = cvData.skills[j];
+                        const skillHTML = `
+                            <h4>${skill.category}:</h4>
+                            <p>${skill.items}</p>
+                        `;
+                        column.innerHTML += skillHTML;
+                    }
+                    
+                    skillsColumns.appendChild(column);
+                }
+                
+                // Update experience
+                const experienceContainer = document.getElementById('cv-experience');
+                experienceContainer.innerHTML = '';
+                
+                cvData.experience.forEach(exp => {
+                    let descriptionHTML = '';
+                    exp.description.forEach(desc => {
+                        descriptionHTML += `<li>${desc}</li>`;
+                    });
+                    
+                    const expHTML = `
+                        <div class="item">
+                            <div class="item-header">
+                                <span class="item-title">${exp.title}</span>
+                                <span class="item-date">${exp.date}</span>
+                            </div>
+                            <div class="item-subtitle">${exp.company}</div>
+                            <div class="item-description">
+                                <ul>${descriptionHTML}</ul>
+                            </div>
+                        </div>
+                    `;
+                    experienceContainer.innerHTML += expHTML;
+                });
+                
+                // Update certifications
+                const certContainer = document.getElementById('cv-certifications');
+                certContainer.innerHTML = '<div class="item-description"><ul></ul></div>';
+                const certList = certContainer.querySelector('ul');
+                
+                cvData.certifications.forEach(cert => {
+                    certList.innerHTML += `<li>${cert}</li>`;
+                });
+                
+                // Update languages
+                const langContainer = document.getElementById('cv-languages');
+                langContainer.innerHTML = '';
+                
+                cvData.languages.forEach(lang => {
+                    const langHTML = `
+                        <div class="language-item">
+                            <span class="language-name">${lang.name}:</span> ${lang.level}
+                        </div>
+                    `;
+                    langContainer.innerHTML += langHTML;
+                });
+                
+                alert('CV updated successfully!');
+            } catch (error) {
+                alert('Error parsing JSON: ' + error.message);
+            }
+        }
+        
+        // Initialize the CV with the default data
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCV();
+        });
+    </script>
 </body>
 </html>
+       
 
