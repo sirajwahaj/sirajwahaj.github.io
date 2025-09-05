@@ -1,162 +1,120 @@
-// Paths (adjust if you move files)
-const YAML_PATH = './cv.yml';
-const JSON_FALLBACK_PATH = './cv-data.json'; // optional fallback
-
-// Load YAML file
-async function loadYAML(url) {
-  const res = await fetch(url, { cache: 'no-store' });
-  if (!res.ok) throw new Error(`YAML fetch failed: ${res.status}`);
-  const text = await res.text();
-  return jsyaml.load(text);
-}
-
-// Load JSON fallback
-async function loadJSON(url) {
-  const res = await fetch(url, { cache: 'no-store' });
-  if (!res.ok) throw new Error(`JSON fetch failed: ${res.status}`);
-  return res.json();
-}
-
-// Convert array or string to comma-separated text
-function asTextList(maybeArrayOrString) {
-  if (Array.isArray(maybeArrayOrString)) return maybeArrayOrString.join(', ');
-  return maybeArrayOrString || '';
-}
-
-// Update CV content
-function updateCV(cv) {
-  // Basic info
-  document.getElementById('cv-name').textContent = cv.name || '';
-  const emailEl = document.getElementById('cv-email');
-  emailEl.textContent = cv.email || '';
-  emailEl.href = cv.email ? `mailto:${cv.email}` : '#';
-  document.getElementById('cv-phone').textContent = cv.phone || '';
-  document.getElementById('cv-address').textContent = cv.address || '';
-  const li = document.getElementById('cv-linkedin');
-  if (li) li.href = cv.linkedin || '#';
-  const gh = document.getElementById('cv-github');
-  if (gh) gh.href = cv.github || '#';
-  document.getElementById('cv-summary').textContent = cv.summary || '';
-  document.getElementById('cv-last-updated').textContent = cv.last_updated || '';
-
-  // Education
-  const eduRoot = document.getElementById('cv-education');
-  eduRoot.innerHTML = '';
-  (cv.education || []).forEach(edu => {
-    eduRoot.insertAdjacentHTML(
-      'beforeend',
-      `<div class="item">
-        <div class="item-header">
-          <span class="item-title">${edu.title || ''}</span>
-          <span class="item-date">${edu.date || ''}</span>
-        </div>
-        <div class="item-subtitle">${edu.institution || ''}</div>
-      </div>`
-    );
-  });
-
-  // Skills
-  const skillsRoot = document.getElementById('cv-skills');
-  skillsRoot.innerHTML = '';
-  (cv.skills || []).forEach(skill => {
-    const itemsText = asTextList(skill.items);
-    skillsRoot.insertAdjacentHTML(
-      'beforeend',
-      `<div class="skill-category">
-        <h4><i class="fas fa-check-circle"></i> ${skill.category || ''}:</h4>
-        <p>${itemsText}</p>
-      </div>`
-    );
-  });
-
-  // Experience
-  const expRoot = document.getElementById('cv-experience');
-  expRoot.innerHTML = '';
-  (cv.professional_experience || []).forEach(exp => {
-    const bullets = (exp.description || []).map(d => `<li>${d}</li>`).join('');
-    expRoot.insertAdjacentHTML(
-      'beforeend',
-      `<div class="item">
-        <div class="item-header">
-          <span class="item-title">${exp.title || ''}</span>
-          <span class="item-date">${exp.date || ''}</span>
-        </div>
-        <div class="item-subtitle">${exp.company || ''}</div>
-        <div class="item-description">
-          <ul>${bullets}</ul>
-        </div>
-      </div>`
-    );
-  });
-
-  // Certifications
-  const certRoot = document.getElementById('cv-certifications');
-  certRoot.innerHTML = '';
-  (cv.certifications || []).forEach(cert => {
-    certRoot.insertAdjacentHTML(
-      'beforeend',
-      `<div class="item"><div class="item-title"><i class="fas fa-award"></i> ${cert}</div></div>`
-    );
-  });
-
-  // Languages
-  const langRoot = document.getElementById('cv-languages');
-  langRoot.innerHTML = '';
-  (cv.languages || []).forEach(lang => {
-    langRoot.insertAdjacentHTML(
-      'beforeend',
-      `<div class="language-item">
-        <span class="language-name">${lang.name || ''}:</span>
-        <span class="language-level">${lang.level || ''}</span>
-      </div>`
-    );
-  });
-}
-
-// Load CV data and then enable PDF button
-async function loadCVData() {
-  let cvData = null;
-  try {
-    cvData = await loadYAML(YAML_PATH);
-  } catch (yamlErr) {
-    console.warn('YAML load failed, trying JSON fallback:', yamlErr);
-    try {
-      cvData = await loadJSON(JSON_FALLBACK_PATH);
-    } catch (jsonErr) {
-      console.error('Both YAML and JSON loads failed:', jsonErr);
-      cvData = {
-        name: 'Sirajulhaq Wahaj',
-        email: 'siraj.wahaj@outlook.com',
-        phone: '+46 727 718 823',
-        address: 'Malmö, Sweden',
-        summary: 'Unable to load external data. Please check cv.yml or cv-data.json path.',
-        last_updated: new Date().toLocaleString()
-      };
+// ----------------- Data -----------------
+const cvData = {
+  name: "Sirajulhaq Wahaj",
+  email: "siraj.wahaj@outlook.com",
+  phone: "+46 727 718 823",
+  address: "Professorsgatan 8B, 215 53 Malmö, Sweden",
+  linkedin: "https://linkedin.com/in/sirajwahaj",
+  github: "https://github.com/sirajwahaj",
+  lastUpdated: new Date().toLocaleDateString(),
+  summary: "Motivated DevOps and Data Science enthusiast with hands-on experience in cloud deployment, CI/CD, and Python programming.",
+  education: [
+    {
+      degree: "Master's in Data Science",
+      school: "Malmö University",
+      date: "2023 - Present"
     }
-  }
-  updateCV(cvData);
-  enablePDFButton(); // enable PDF button only after CV is fully loaded
-}
+  ],
+  skills: [
+    { category: "Programming", items: ["Python", "Java", "Flask"] },
+    { category: "DevOps Tools", items: ["Docker", "Git", "Linux"] },
+    { category: "Networking", items: ["TCP/IP", "DNS", "HTTP"] }
+  ],
+  experience: [
+    {
+      title: "DevOps Trainee",
+      company: "Company XYZ",
+      date: "2024 - Present",
+      description: [
+        "Implemented CI/CD pipelines using GitHub Actions",
+        "Automated deployment scripts using Python and Bash"
+      ]
+    }
+  ],
+  certifications: ["AWS Certified Solutions Architect", "Docker Certified Associate"],
+  languages: [
+    { name: "English", level: "Fluent" },
+    { name: "Pashto", level: "Native" }
+  ]
+};
 
-// Enable PDF download button
-function enablePDFButton() {
-  const btn = document.getElementById('download-pdf');
-  if (!btn) return;
-  btn.disabled = false; // in case it was disabled initially
-  btn.addEventListener('click', () => {
-    const element = document.getElementById('cv-root');
-    const opt = {
-      margin: [10, 10, 10, 10],
-      filename: 'Sirajulhaq_Wahaj_CV.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2, logging: true, scrollY: 0 },
-      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-    };
-    html2pdf().set(opt).from(element).save();
-  });
-}
+// ----------------- Fill CV -----------------
+document.getElementById("cv-name").textContent = cvData.name;
+document.getElementById("cv-email").textContent = cvData.email;
+document.getElementById("cv-email").href = "mailto:" + cvData.email;
+document.getElementById("cv-phone").textContent = cvData.phone;
+document.getElementById("cv-address").textContent = cvData.address;
+document.getElementById("cv-linkedin").href = cvData.linkedin;
+document.getElementById("cv-linkedin").textContent = cvData.linkedin.replace("https://", "");
+document.getElementById("cv-github").href = cvData.github;
+document.getElementById("cv-github").textContent = cvData.github.replace("https://", "");
+document.getElementById("cv-summary").textContent = cvData.summary;
+document.getElementById("cv-last-updated").textContent = cvData.lastUpdated;
 
-// Start everything after DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-  loadCVData();
+// Education
+const eduContainer = document.getElementById("cv-education");
+cvData.education.forEach(edu => {
+  const div = document.createElement("div");
+  div.classList.add("item");
+  div.innerHTML = `<div class="item-header">
+                        <span class="item-title">${edu.degree}</span>
+                        <span class="item-date">${edu.date}</span>
+                     </div>
+                     <div class="item-subtitle">${edu.school}</div>`;
+  eduContainer.appendChild(div);
+});
+
+// Skills
+const skillsContainer = document.getElementById("cv-skills");
+cvData.skills.forEach(skill => {
+  const div = document.createElement("div");
+  div.classList.add("skill-category");
+  div.innerHTML = `<h4><i class="fas fa-star"></i>${skill.category}</h4>
+                     <p>${skill.items.join(", ")}</p>`;
+  skillsContainer.appendChild(div);
+});
+
+// Experience
+const expContainer = document.getElementById("cv-experience");
+cvData.experience.forEach(exp => {
+  const div = document.createElement("div");
+  div.classList.add("item");
+  div.innerHTML = `<div class="item-header">
+                        <span class="item-title">${exp.title}</span>
+                        <span class="item-date">${exp.date}</span>
+                     </div>
+                     <div class="item-subtitle">${exp.company}</div>
+                     <div class="item-description"><ul>${exp.description.map(d => `<li>${d}</li>`).join("")}</ul></div>`;
+  expContainer.appendChild(div);
+});
+
+// Certifications
+const certContainer = document.getElementById("cv-certifications");
+cvData.certifications.forEach(cert => {
+  const div = document.createElement("div");
+  div.classList.add("badge");
+  div.textContent = cert;
+  certContainer.appendChild(div);
+});
+
+// Languages
+const langContainer = document.getElementById("cv-languages");
+cvData.languages.forEach(lang => {
+  const div = document.createElement("div");
+  div.classList.add("language-item");
+  div.innerHTML = `<span class="language-name">${lang.name}</span> <span class="language-level">${lang.level}</span>`;
+  langContainer.appendChild(div);
+});
+
+// ----------------- PDF Download -----------------
+document.getElementById("download-pdf").addEventListener("click", () => {
+  const element = document.querySelector(".cv-container");
+  const opt = {
+    margin: 0.3,
+    filename: "Sirajulhaq_Wahaj_CV.pdf",
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2, letterRendering: true, useCORS: true },
+    jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+  };
+  html2pdf().set(opt).from(element).save();
 });
