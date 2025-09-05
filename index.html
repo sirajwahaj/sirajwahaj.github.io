@@ -3,187 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sirajulhaq Wahaj - Academic CV</title>
+    <title>Sirajulhaq Wahaj | Curriculum Vitae</title>
+    <!-- Load Computer Modern Font (LaTeX's default font) -->
+    <link href='https://fonts.googleapis.com/css2?family=CMU+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap' rel='stylesheet'>
     <style>
-        /* === BASE STYLES === */
+        /* === BASE STYLES - LaTeX Aesthetic === */
+        :root {
+            --latex-main: #1a1a1d; /* Near-black, like LaTeX text */
+            --latex-light: #6f6f70; /* For subtle text */
+            --latex-accent: #8b0000; /* A classic maroon/red for links and highlights */
+            --latex-paper: #f8f8f8; /* Off-white background like paper */
+            --latex-shadow: #d0d0d0; /* Subtle shadow */
+        }
         body {
-            font-family: 'Georgia', 'Times New Roman', serif; /* Classic academic font */
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            color: #333;
-            background-color: #fff;
-            max-width: 1000px;
+            font-family: 'CMU Serif', 'Computer Modern Serif', 'Times New Roman', serif;
+            color: var(--latex-main);
+            background-color: var(--latex-paper);
+            line-height: 1.5;
             margin: 0 auto;
-            padding: 20px;
+            padding: 2em;
+            max-width: 800px; /* Constrain width like a document */
+            box-shadow: 0 0 15px var(--latex-shadow);
+            box-sizing: border-box;
         }
         a {
-            color: #1a73e8; /* A professional blue for links */
+            color: var(--latex-accent);
             text-decoration: none;
         }
         a:hover {
             text-decoration: underline;
+            text-decoration-color: var(--latex-light);
         }
-        h1, h2, h3 {
-            color: #2c3e50; /* A dark blue-grey for headings */
-            margin-top: 1.5em;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 0.3em;
+
+        /* === TYPOGRAPHY === */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            margin-top: 1.8em;
+            margin-bottom: 0.5em;
+            border-bottom: none; /* Remove default border */
         }
         h1 {
-            font-size: 2.2em;
-            border-bottom: 2px solid #2c3e50;
-            margin-top: 0;
-        }
-
-        /* === HEADER SECTION === */
-        .header {
+            font-size: 1.8em;
             text-align: center;
+            margin-top: 0;
+            padding-bottom: 0.3em;
+            border-bottom: 2pt solid var(--latex-accent); /* Classic title rule */
+        }
+        h2 {
+            font-size: 1.4em;
+            /* Small caps effect for section headers */
+            font-variant-caps: small-caps;
+            letter-spacing: 0.05em;
+        }
+        .subtitle {
+            font-style: italic;
+            color: var(--latex-light);
+            text-align: center;
+            margin-top: -0.8em;
             margin-bottom: 2em;
         }
-        .contact-info {
-            font-size: 0.95em;
-            color: #666;
-            margin-bottom: 0.5em;
+
+        /* === LISTS === */
+        ul {
+            padding-left: 1.5em;
+        }
+        li {
+            margin-bottom: 0.4em;
+            text-align: justify;
         }
 
-        /* === TWO-COLUMN LAYOUT FOR SKILLS === */
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+        /* === SECTIONS & ITEMS === */
+        .cv-section {
+            margin-bottom: 2em;
         }
-        .skills-column {
-            flex: 0 0 48%; /* Two columns with a small gap */
-        }
-        @media (max-width: 768px) {
-            .skills-column {
-                flex: 0 0 100%; /* Stack columns on mobile */
-            }
-        }
-
-        /* === EXPERIENCE & EDUCATION SECTION === */
-        .item {
-            margin-bottom: 1.5em;
+        .cv-item {
+            margin-bottom: 1.2em;
         }
         .item-title {
             font-weight: bold;
-            font-size: 1.1em;
-            margin-bottom: 0.2em;
+            display: block;
         }
         .item-subtitle {
             font-style: italic;
-            color: #555;
-            margin-bottom: 0.2em;
+            display: block;
+            color: var(--latex-light);
         }
         .item-date {
-            color: #777;
-            font-size: 0.9em;
-            margin-bottom: 0.5em;
+            float: right;
+            font-style: italic;
+            color: var(--latex-light);
         }
         .item-description {
+            margin-top: 0.4em;
             padding-left: 1em;
         }
-        .item-description ul {
-            margin-top: 0.5em;
-            margin-bottom: 0.5em;
+
+        /* === HORIZONTAL RULES === */
+        hr {
+            border: 0;
+            height: 1pt;
+            background-color: var(--latex-shadow);
+            margin: 2em 0;
         }
 
         /* === FOOTER === */
         footer {
             text-align: center;
             margin-top: 3em;
-            color: #999;
+            color: var(--latex-light);
             font-size: 0.9em;
-            border-top: 1px solid #eee;
-            padding-top: 1em;
+        }
+        @media (max-width: 768px) {
+            /* Adjust for mobile */
+            .item-date {
+                float: none;
+                display: block;
+            }
+            body {
+                padding: 1em;
+                box-shadow: none;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="header">
+    <header>
         <h1>Sirajulhaq Wahaj</h1>
-        <div class="contact-info">
+        <div class="subtitle">
             <a href="mailto:siraj.wahaj@outlook.com">siraj.wahaj@outlook.com</a> | +46 727 718 823<br>
             Professorsgatan 8B, 215 53 Malmö, Sweden<br>
-            <a href="https://linkedin.com/in/sirajwahaj" target="_blank">linkedin.com/in/sirajwahaj</a> | <a href="https://github.com/sirajwahaj" target="_blank">github.com/sirajwahaj</a>
+            <a href="https://linkedin.com/in/sirajwahaj" target="_blank">LinkedIn</a> ⋅
+            <a href="https://github.com/sirajwahaj" target="_blank">GitHub</a>
         </div>
-    </div>
+    </header>
 
-    <section>
+    <hr> <!-- Horizontal rule like in LaTeX documents -->
+
+    <section class="cv-section">
         <h2>Professional Summary</h2>
         <p>A highly motivated IT professional with expertise in data science, machine learning operations (MLOps), and IT infrastructure management. Proficient in statistics, probability, and machine learning algorithms with a strong understanding of the societal impacts of data. Skilled in implementing end-to-end data pipelines, server management, and automation scripting. Passionate about leveraging technology to solve complex problems, optimize workflows, and deliver impactful solutions.</p>
     </section>
 
-    <section>
+    <section class="cv-section">
         <h2>Education</h2>
         
-        <div class="item">
-            <div class="item-title">Master's Degree in Data Science</div>
-            <div class="item-subtitle">Malmö University, Sweden</div>
-            <div class="item-date">August 2024 – June 2026 (Expected)</div>
+        <div class="cv-item">
+            <span class="item-title">Master's Degree in Data Science</span>
+            <span class="item-subtitle">Malmö University, Sweden</span>
+            <span class="item-date">August 2024 – June 2026 (Expected)</span>
         </div>
 
-        <div class="item">
-            <div class="item-title">DevOps Engineer</div>
-            <div class="item-subtitle">Jensen Yrkeshögskola, Sweden</div>
-            <div class="item-date">Paused to focus on completing a Master’s in Data Science.</div>
-            <div class="item-date">August 2023 – August 2024 (Paused) | August 2025 – June 2026 (Expected)</div>
+        <div class="cv-item">
+            <span class="item-title">DevOps Engineer</span>
+            <span class="item-subtitle">Jensen Yrkeshögskola, Sweden</span>
+            <span class="item-date">August 2023 – August 2024 (Paused)</span>
+            <div class="item-description">
+                Paused to focus on completing a Master’s in Data Science. Expected to resume August 2025 – June 2026.
+            </div>
         </div>
 
-        <div class="item">
-            <div class="item-title">IT Administration</div>
-            <div class="item-subtitle">Technical University of Berlin, Germany</div>
-            <div class="item-date">March 2018 – September 2018</div>
+        <div class="cv-item">
+            <span class="item-title">IT Administration</span>
+            <span class="item-subtitle">Technical University of Berlin, Germany</span>
+            <span class="item-date">March 2018 – September 2018</span>
         </div>
 
-        <div class="item">
-            <div class="item-title">Bachelor of Science in Information Technology</div>
-            <div class="item-subtitle">Kabul Polytechnic University, Afghanistan</div>
-            <div class="item-date">2013 – 2016</div>
+        <div class="cv-item">
+            <span class="item-title">Bachelor of Science in Information Technology</span>
+            <span class="item-subtitle">Kabul Polytechnic University, Afghanistan</span>
+            <span class="item-date">2013 – 2016</span>
         </div>
     </section>
 
-    <section>
+    <section class="cv-section">
         <h2>Technical Skills</h2>
-        <div class="skills-container">
-            <div class="skills-column">
-                <p><strong>Programming & Scripting:</strong><br>
-                Python, Bash, PowerShell, Java, PHP</p>
-                
-                <p><strong>Machine Learning:</strong><br>
-                Supervised & Unsupervised Learning, Regression, Classification, Feature Engineering</p>
-                
-                <p><strong>MLOps:</strong><br>
-                Docker, Kubernetes, CI/CD, Model Deployment</p>
-                
-                <p><strong>Databases:</strong><br>
-                MySQL, PostgreSQL</p>
-                
-                <p><strong>Operating Systems:</strong><br>
-                Linux (Ubuntu, CentOS), Windows Server 2019/2022</p>
-            </div>
-            <div class="skills-column">
-                <p><strong>Virtualization & Cloud:</strong><br>
-                Docker, Kubernetes, Xen, Azure, Hyper-V</p>
-                
-                <p><strong>Networking & Security:</strong><br>
-                pfSense, IPtable, Samba, IT Security, Cisco Cybersecurity</p>
-                
-                <p><strong>Web Technologies:</strong><br>
-                HTML, CSS, PHP (CodeIgniter Framework)</p>
-                
-                <p><strong>Monitoring Tools:</strong><br>
-                Linux Monitoring Tools, Bareos Backup Systems</p>
-                
-                <p><strong>Project Management:</strong><br>
-                Agile Methodologies</p>
-            </div>
-        </div>
+        <p>
+            <strong>Programming & Scripting:</strong> Python, Bash, PowerShell, Java, PHP<br>
+            <strong>Machine Learning:</strong> Supervised & Unsupervised Learning, Regression, Classification, Feature Engineering<br>
+            <strong>MLOps:</strong> Docker, Kubernetes, CI/CD, Model Deployment<br>
+            <strong>Databases:</strong> MySQL, PostgreSQL<br>
+            <strong>Operating Systems:</strong> Linux (Ubuntu, CentOS), Windows Server 2019/2022<br>
+            <strong>Virtualization & Cloud:</strong> Docker, Kubernetes, Xen, Azure, Hyper-V<br>
+            <strong>Networking & Security:</strong> pfSense, IPtable, Samba, IT Security, Cisco Cybersecurity<br>
+            <strong>Web Technologies:</strong> HTML, CSS, PHP (CodeIgniter Framework)<br>
+            <strong>Monitoring Tools:</strong> Linux Monitoring Tools, Bareos Backup Systems<br>
+            <strong>Project Management:</strong> Agile Methodologies
+        </p>
     </section>
 
-    <section>
+    <section class="cv-section">
         <h2>Certifications</h2>
         <ul>
             <li>Microsoft Azure Fundamentals</li>
@@ -191,13 +200,13 @@
         </ul>
     </section>
 
-    <section>
+    <section class="cv-section">
         <h2>Professional Experience</h2>
         
-        <div class="item">
-            <div class="item-title">IT Support Intern</div>
-            <div class="item-subtitle">ReDi School of Digital Integration, Malmö, Sweden</div>
-            <div class="item-date">March 2024 – May 2024</div>
+        <div class="cv-item">
+            <span class="item-title">IT Support Intern</span>
+            <span class="item-subtitle">ReDi School of Digital Integration, Malmö, Sweden</span>
+            <span class="item-date">March 2024 – May 2024</span>
             <div class="item-description">
                 <ul>
                     <li>Configured and maintained classroom computer systems for educational sessions.</li>
@@ -207,9 +216,9 @@
             </div>
         </div>
 
-        <div class="item">
-            <div class="item-title">IT Engineer</div>
-            <div class="item-subtitle">Afghanistan High Security Printing, Kabul, Afghanistan</div>
+        <div class="cv-item">
+            <span class="item-title">IT Engineer</span>
+            <span class="item-subtitle">Afghanistan High Security Printing, Kabul, Afghanistan</span>
             <div class="item-description">
                 <ul>
                     <li>Installed, configured, and maintained Linux and Windows servers.</li>
@@ -219,9 +228,9 @@
             </div>
         </div>
 
-        <div class="item">
-            <div class="item-title">PHP Developer</div>
-            <div class="item-subtitle">Afghanistan Development and Registry Addressing Service (ADRAS), Kabul, Afghanistan</div>
+        <div class="cv-item">
+            <span class="item-title">PHP Developer</span>
+            <span class="item-subtitle">Afghanistan Development and Registry Addressing Service (ADRAS), Kabul, Afghanistan</span>
             <div class="item-description">
                 <ul>
                     <li>Developed and maintained interactive web applications using the CodeIgniter PHP framework.</li>
@@ -231,7 +240,7 @@
         </div>
     </section>
 
-    <section>
+    <section class="cv-section">
         <h2>Languages</h2>
         <ul>
             <li><strong>English:</strong> Fluent</li>
@@ -241,7 +250,7 @@
     </section>
 
     <footer>
-        <p>© 2024 Sirajulhaq Wahaj. Hosted on <a href="https://pages.github.com/">GitHub Pages</a>.</p>
+        <p>This document was typeset with HTML & CSS inspired by L<sup>A</sup>T<sub>E</sub>X. © 2024 Sirajulhaq Wahaj.</p>
     </footer>
 
 </body>
