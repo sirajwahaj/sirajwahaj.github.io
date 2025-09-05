@@ -1,121 +1,143 @@
-const cvData = {
-  name: "Sirajulhaq Wahaj",
-  email: "siraj.wahaj@outlook.com",
-  phone: "+46 727 718 823",
-  address: "Professorsgatan 8B, 215 53 Malmö, Sweden",
-  linkedin: "https://linkedin.com/in/sirajwahaj",
-  github: "https://github.com/sirajwahaj",
-  lastUpdated: new Date().toLocaleDateString(),
-  summary: "Motivated DevOps and Data Science enthusiast with hands-on experience in cloud deployment, CI/CD, and Python programming.",
-  education: [
-    { degree: "Master's in Data Science", school: "Malmö University", date: "2023 - Present" },
-    { degree: "Bachelor's in Computer Science", school: "University XYZ", date: "2019 - 2023" }
-  ],
-  skills: [
-    { category: "Programming", items: ["Python", "Java", "Flask"] },
-    { category: "DevOps Tools", items: ["Docker", "Git", "Linux"] },
-    { category: "Networking", items: ["TCP/IP", "DNS", "HTTP"] }
-  ],
-  experience: [
-    { title: "DevOps Trainee", company: "Company XYZ", date: "2024 - Present", description: ["Implemented CI/CD pipelines using GitHub Actions", "Automated deployment scripts using Python and Bash"] },
-    { title: "Data Science Intern", company: "Company ABC", date: "2023", description: ["Analyzed datasets using Python", "Built predictive models for business insights"] }
-  ],
-  certifications: ["AWS Certified Solutions Architect", "Docker Certified Associate", "Python Advanced Certification"],
-  languages: [{ name: "English", level: "Fluent" }, { name: "Pashto", level: "Native" }]
-};
+// --- CONFIGURATION ---
+// Update these paths if your files are in different folders
+const YAML_PATH = './cv.yml';
+const JSON_FALLBACK_PATH = './cv-data.json'; // optional fallback
 
-function fillCV() {
-  document.getElementById("cv-name").textContent = cvData.name;
-  document.getElementById("cv-email").textContent = cvData.email;
-  document.getElementById("cv-email").href = "mailto:" + cvData.email;
-  document.getElementById("cv-phone").textContent = cvData.phone;
-  document.getElementById("cv-address").textContent = cvData.address;
-  document.getElementById("cv-linkedin").href = cvData.linkedin;
-  document.getElementById("cv-linkedin").textContent = cvData.linkedin.replace("https://", "");
-  document.getElementById("cv-github").href = cvData.github;
-  document.getElementById("cv-github").textContent = cvData.github.replace("https://", "");
-  document.getElementById("cv-summary").textContent = cvData.summary;
-  document.getElementById("cv-last-updated").textContent = cvData.lastUpdated;
+// --- HELPER FUNCTIONS ---
+async function loadYAML(url) {
+  const res = await fetch(url, { cache: 'no-store' });
+  if (!res.ok) throw new Error(`Failed to fetch YAML: ${res.status}`);
+  const text = await res.text();
+  return jsyaml.load(text);
+}
 
-  // Education
-  const eduContainer = document.getElementById("cv-education");
-  cvData.education.forEach(edu => {
-    const div = document.createElement("div");
-    div.classList.add("item");
-    div.innerHTML = `<div class="item-header"><span class="item-title">${edu.degree}</span><span class="item-date">${edu.date}</span></div><div class="item-subtitle">${edu.school}</div>`;
-    eduContainer.appendChild(div);
+async function loadJSON(url) {
+  const res = await fetch(url, { cache: 'no-store' });
+  if (!res.ok) throw new Error(`Failed to fetch JSON: ${res.status}`);
+  return res.json();
+}
+
+function asTextList(value) {
+  return Array.isArray(value) ? value.join(', ') : (value || '');
+}
+
+// --- MAIN UPDATE FUNCTION ---
+function updateCV(cv) {
+  // Basic info
+  document.getElementById('cv-name').textContent = cv.name || '';
+  const emailEl = document.getElementById('cv-email');
+  emailEl.textContent = cv.email || '';
+  emailEl.href = cv.email ? `mailto:${cv.email}` : '#';
+
+  document.getElementById('cv-phone').textContent = cv.phone || '';
+  document.getElementById('cv-address').textContent = cv.address || '';
+
+  const li = document.getElementById('cv-linkedin');
+  if (li) li.href = cv.linkedin || '#';
+  const gh = document.getElementById('cv-github');
+  if (gh) gh.href = cv.github || '#';
+
+  document.getElementById('cv-summary').textContent = cv.summary || '';
+  document.getElementById('cv-last-updated').textContent = cv.last_updated || '';
+
+  // --- Education ---
+  const eduRoot = document.getElementById('cv-education');
+  eduRoot.innerHTML = ''; // Clear existing
+  (cv.education || []).forEach(edu => {
+    eduRoot.insertAdjacentHTML(
+      'beforeend',
+      `<div class="item">
+        <div class="item-header">
+          <span class="item-title">${edu.title || ''}</span>
+          <span class="item-date">${edu.date || ''}</span>
+        </div>
+        <div class="item-subtitle">${edu.institution || ''}</div>
+      </div>`
+    );
   });
 
-  // Skills
-  const skillsContainer = document.getElementById("cv-skills");
-  cvData.skills.forEach(skill => {
-    const div = document.createElement("div");
-    div.classList.add("skill-category");
-    div.innerHTML = `<h4><i class="fas fa-star"></i>${skill.category}</h4><p>${skill.items.join(", ")}</p>`;
-    skillsContainer.appendChild(div);
+  // --- Skills ---
+  const skillsRoot = document.getElementById('cv-skills');
+  skillsRoot.innerHTML = ''; // Clear existing
+  (cv.skills || []).forEach(skill => {
+    skillsRoot.insertAdjacentHTML(
+      'beforeend',
+      `<div class="skill-category">
+        <h4><i class="fas fa-check-circle"></i> ${skill.category || ''}:</h4>
+        <p>${asTextList(skill.items)}</p>
+      </div>`
+    );
   });
 
-  // Experience
-  const expContainer = document.getElementById("cv-experience");
-  cvData.experience.forEach(exp => {
-    const div = document.createElement("div");
-    div.classList.add("item");
-    div.innerHTML = `<div class="item-header"><span class="item-title">${exp.title}</span><span class="item-date">${exp.date}</span></div><div class="item-subtitle">${exp.company}</div><div class="item-description"><ul>${exp.description.map(d => `<li>${d}</li>`).join("")}</ul></div>`;
-    expContainer.appendChild(div);
+  // --- Experience ---
+  const expRoot = document.getElementById('cv-experience');
+  expRoot.innerHTML = ''; // Clear existing
+  (cv.professional_experience || []).forEach(exp => {
+    const bullets = (exp.description || []).map(d => `<li>${d}</li>`).join('');
+    expRoot.insertAdjacentHTML(
+      'beforeend',
+      `<div class="item">
+        <div class="item-header">
+          <span class="item-title">${exp.title || ''}</span>
+          <span class="item-date">${exp.date || ''}</span>
+        </div>
+        <div class="item-subtitle">${exp.company || ''}</div>
+        <div class="item-description">
+          <ul>${bullets}</ul>
+        </div>
+      </div>`
+    );
   });
 
-  // Certifications
-  const certContainer = document.getElementById("cv-certifications");
-  cvData.certifications.forEach(cert => {
-    const div = document.createElement("div");
-    div.classList.add("badge");
-    div.textContent = cert;
-    certContainer.appendChild(div);
+  // --- Certifications ---
+  const certRoot = document.getElementById('cv-certifications');
+  certRoot.innerHTML = ''; // Clear existing
+  (cv.certifications || []).forEach(cert => {
+    certRoot.insertAdjacentHTML(
+      'beforeend',
+      `<div class="item">
+        <div class="item-title"><i class="fas fa-award"></i> ${cert}</div>
+      </div>`
+    );
   });
 
-  // Languages
-  const langContainer = document.getElementById("cv-languages");
-  cvData.languages.forEach(lang => {
-    const div = document.createElement("div");
-    div.classList.add("language-item");
-    div.innerHTML = `<span class="language-name">${lang.name}</span> <span class="language-level">${lang.level}</span>`;
-    langContainer.appendChild(div);
+  // --- Languages ---
+  const langRoot = document.getElementById('cv-languages');
+  langRoot.innerHTML = ''; // Clear existing
+  (cv.languages || []).forEach(lang => {
+    langRoot.insertAdjacentHTML(
+      'beforeend',
+      `<div class="language-item">
+        <span class="language-name">${lang.name || ''}:</span>
+        <span class="language-level">${lang.level || ''}</span>
+      </div>`
+    );
   });
 }
 
-fillCV();
-
-// PDF download
-document.getElementById("download-pdf").addEventListener("click", () => {
-  const element = document.querySelector(".cv-container");
-  const opt = {
-    margin: 0.3,
-    filename: "Sirajulhaq_Wahaj_CV.pdf",
-    image: { type: 'jpeg', quality: 1 },
-    html2canvas: { scale: 2, useCORS: true, scrollY: 0 },
-    jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
-  };
-  html2pdf().set(opt).from(element).save();
-});
-
-document.getElementById("download-pdf").addEventListener("click", () => {
-  const element = document.querySelector(".cv-container");
-  const opt = {
-    margin: 0.3,
-    filename: "Sirajulhaq_Wahaj_CV.pdf",
-    image: { type: 'jpeg', quality: 1 },
-    html2canvas: {
-      scale: 2,
-      useCORS: true,
-      scrollY: 0
-    },
-    jsPDF: {
-      unit: 'in',
-      format: 'a4',
-      orientation: 'portrait'
+// --- LOAD DATA FUNCTION ---
+async function loadCVData() {
+  try {
+    const data = await loadYAML(YAML_PATH);
+    updateCV(data);
+  } catch (yamlErr) {
+    console.warn('YAML load failed, trying JSON fallback:', yamlErr);
+    try {
+      const data = await loadJSON(JSON_FALLBACK_PATH);
+      updateCV(data);
+    } catch (jsonErr) {
+      console.error('Both YAML and JSON loads failed:', jsonErr);
+      updateCV({
+        name: 'Sirajulhaq Wahaj',
+        email: 'siraj.wahaj@outlook.com',
+        phone: '+46 727 718 823',
+        address: 'Malmö, Sweden',
+        summary: 'Unable to load external data. Please check cv.yml or cv-data.json path.',
+        last_updated: new Date().toLocaleString()
+      });
     }
-  };
+  }
+}
 
-  // This ensures each .section starts on a new PDF page
-  html2pdf().set(opt).from(element).save();
-});
+// --- INITIALIZE ---
+document.addEventListener('DOMContentLoaded', loadCVData);
