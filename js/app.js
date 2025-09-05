@@ -113,57 +113,50 @@ function updateCV(cv) {
   });
 }
 
-// Load CV data and update page
+// Load CV data and then enable PDF button
 async function loadCVData() {
+  let cvData = null;
   try {
-    const data = await loadYAML(YAML_PATH);
-    updateCV(data);
+    cvData = await loadYAML(YAML_PATH);
   } catch (yamlErr) {
     console.warn('YAML load failed, trying JSON fallback:', yamlErr);
     try {
-      const data = await loadJSON(JSON_FALLBACK_PATH);
-      updateCV(data);
+      cvData = await loadJSON(JSON_FALLBACK_PATH);
     } catch (jsonErr) {
       console.error('Both YAML and JSON loads failed:', jsonErr);
-      updateCV({
+      cvData = {
         name: 'Sirajulhaq Wahaj',
         email: 'siraj.wahaj@outlook.com',
         phone: '+46 727 718 823',
         address: 'Malmö, Sweden',
         summary: 'Unable to load external data. Please check cv.yml or cv-data.json path.',
         last_updated: new Date().toLocaleString()
-      });
+      };
     }
   }
+  updateCV(cvData);
+  enablePDFButton(); // enable PDF button only after CV is fully loaded
 }
 
-// Function to download CV as PDF
-// Function to download CV as PDF
-function downloadCVasPDF() {
-  const element = document.getElementById('cv-root');
-
-  // PDF options for A4
-  const opt = {
-    margin: [10, 10, 10, 10], // top, left, bottom, right in mm
-    filename: 'Sirajulhaq_Wahaj_CV.pdf',
-    image: { type: 'jpeg', quality: 0.98 },
-    html2canvas: { scale: 2, logging: true, scrollY: 0 },
-    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-  };
-
-  html2pdf().set(opt).from(element).save();
+// Enable PDF download button
+function enablePDFButton() {
+  const btn = document.getElementById('download-pdf');
+  if (!btn) return;
+  btn.disabled = false; // in case it was disabled initially
+  btn.addEventListener('click', () => {
+    const element = document.getElementById('cv-root');
+    const opt = {
+      margin: [10, 10, 10, 10],
+      filename: 'Sirajulhaq_Wahaj_CV.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2, logging: true, scrollY: 0 },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+    html2pdf().set(opt).from(element).save();
+  });
 }
 
-// Attach button
-document.getElementById('download-pdf').addEventListener('click', downloadCVasPDF);
-
-
-// Event listeners
+// Start everything after DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
   loadCVData();
-
-  const downloadBtn = document.getElementById('download-pdf');
-  if (downloadBtn) {
-    downloadBtn.addEventListener('click', downloadCVasPDF);
-  }
 });
