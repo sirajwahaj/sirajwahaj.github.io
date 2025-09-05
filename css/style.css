@@ -250,3 +250,14 @@ button:hover {
         margin-top: 5px;
     }
 }
+
+/* Ensure each major section starts on a new page in PDF */
+@media print {
+    .section {
+        page-break-before: always;
+    }
+
+    .header {
+        page-break-before: auto;
+    }
+}

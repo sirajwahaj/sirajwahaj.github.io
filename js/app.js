@@ -97,3 +97,25 @@ document.getElementById("download-pdf").addEventListener("click", () => {
   };
   html2pdf().set(opt).from(element).save();
 });
+
+document.getElementById("download-pdf").addEventListener("click", () => {
+  const element = document.querySelector(".cv-container");
+  const opt = {
+    margin: 0.3,
+    filename: "Sirajulhaq_Wahaj_CV.pdf",
+    image: { type: 'jpeg', quality: 1 },
+    html2canvas: {
+      scale: 2,
+      useCORS: true,
+      scrollY: 0
+    },
+    jsPDF: {
+      unit: 'in',
+      format: 'a4',
+      orientation: 'portrait'
+    }
+  };
+
+  // This ensures each .section starts on a new PDF page
+  html2pdf().set(opt).from(element).save();
+});
