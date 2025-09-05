@@ -1,48 +1,47 @@
-// --- CONFIGURATION ---
-// Update these paths if your files are in different folders
+// Paths (adjust if you move files)
 const YAML_PATH = './cv.yml';
 const JSON_FALLBACK_PATH = './cv-data.json'; // optional fallback
 
-// --- HELPER FUNCTIONS ---
+// Load YAML file
 async function loadYAML(url) {
   const res = await fetch(url, { cache: 'no-store' });
-  if (!res.ok) throw new Error(`Failed to fetch YAML: ${res.status}`);
+  if (!res.ok) throw new Error(`YAML fetch failed: ${res.status}`);
   const text = await res.text();
   return jsyaml.load(text);
 }
 
+// Load JSON fallback
 async function loadJSON(url) {
   const res = await fetch(url, { cache: 'no-store' });
-  if (!res.ok) throw new Error(`Failed to fetch JSON: ${res.status}`);
+  if (!res.ok) throw new Error(`JSON fetch failed: ${res.status}`);
   return res.json();
 }
 
-function asTextList(value) {
-  return Array.isArray(value) ? value.join(', ') : (value || '');
+// Convert array or string to comma-separated text
+function asTextList(maybeArrayOrString) {
+  if (Array.isArray(maybeArrayOrString)) return maybeArrayOrString.join(', ');
+  return maybeArrayOrString || '';
 }
 
-// --- MAIN UPDATE FUNCTION ---
+// Update CV content
 function updateCV(cv) {
   // Basic info
   document.getElementById('cv-name').textContent = cv.name || '';
   const emailEl = document.getElementById('cv-email');
   emailEl.textContent = cv.email || '';
   emailEl.href = cv.email ? `mailto:${cv.email}` : '#';
-
   document.getElementById('cv-phone').textContent = cv.phone || '';
   document.getElementById('cv-address').textContent = cv.address || '';
-
   const li = document.getElementById('cv-linkedin');
   if (li) li.href = cv.linkedin || '#';
   const gh = document.getElementById('cv-github');
   if (gh) gh.href = cv.github || '#';
-
   document.getElementById('cv-summary').textContent = cv.summary || '';
   document.getElementById('cv-last-updated').textContent = cv.last_updated || '';
 
-  // --- Education ---
+  // Education
   const eduRoot = document.getElementById('cv-education');
-  eduRoot.innerHTML = ''; // Clear existing
+  eduRoot.innerHTML = '';
   (cv.education || []).forEach(edu => {
     eduRoot.insertAdjacentHTML(
       'beforeend',
@@ -56,22 +55,23 @@ function updateCV(cv) {
     );
   });
 
-  // --- Skills ---
+  // Skills
   const skillsRoot = document.getElementById('cv-skills');
-  skillsRoot.innerHTML = ''; // Clear existing
+  skillsRoot.innerHTML = '';
   (cv.skills || []).forEach(skill => {
+    const itemsText = asTextList(skill.items);
     skillsRoot.insertAdjacentHTML(
       'beforeend',
       `<div class="skill-category">
         <h4><i class="fas fa-check-circle"></i> ${skill.category || ''}:</h4>
-        <p>${asTextList(skill.items)}</p>
+        <p>${itemsText}</p>
       </div>`
     );
   });
 
-  // --- Experience ---
+  // Experience
   const expRoot = document.getElementById('cv-experience');
-  expRoot.innerHTML = ''; // Clear existing
+  expRoot.innerHTML = '';
   (cv.professional_experience || []).forEach(exp => {
     const bullets = (exp.description || []).map(d => `<li>${d}</li>`).join('');
     expRoot.insertAdjacentHTML(
@@ -89,21 +89,19 @@ function updateCV(cv) {
     );
   });
 
-  // --- Certifications ---
+  // Certifications
   const certRoot = document.getElementById('cv-certifications');
-  certRoot.innerHTML = ''; // Clear existing
+  certRoot.innerHTML = '';
   (cv.certifications || []).forEach(cert => {
     certRoot.insertAdjacentHTML(
       'beforeend',
-      `<div class="item">
-        <div class="item-title"><i class="fas fa-award"></i> ${cert}</div>
-      </div>`
+      `<div class="item"><div class="item-title"><i class="fas fa-award"></i> ${cert}</div></div>`
     );
   });
 
-  // --- Languages ---
+  // Languages
   const langRoot = document.getElementById('cv-languages');
-  langRoot.innerHTML = ''; // Clear existing
+  langRoot.innerHTML = '';
   (cv.languages || []).forEach(lang => {
     langRoot.insertAdjacentHTML(
       'beforeend',
@@ -115,7 +113,7 @@ function updateCV(cv) {
   });
 }
 
-// --- LOAD DATA FUNCTION ---
+// Load CV data and update page
 async function loadCVData() {
   try {
     const data = await loadYAML(YAML_PATH);
@@ -139,5 +137,28 @@ async function loadCVData() {
   }
 }
 
-// --- INITIALIZE ---
-document.addEventListener('DOMContentLoaded', loadCVData);
+// Function to download CV as PDF
+function downloadCVasPDF() {
+  const element = document.getElementById('cv-root'); // wrap all CV content in #cv-root
+  if (!element) return;
+
+  const opt = {
+    margin: 0.5,
+    filename: 'Sirajulhaq_Wahaj_CV.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+  };
+
+  html2pdf().set(opt).from(element).save();
+}
+
+// Event listeners
+document.addEventListener('DOMContentLoaded', () => {
+  loadCVData();
+
+  const downloadBtn = document.getElementById('download-pdf');
+  if (downloadBtn) {
+    downloadBtn.addEventListener('click', downloadCVasPDF);
+  }
+});
